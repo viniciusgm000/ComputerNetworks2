@@ -1,0 +1,150 @@
+<!--
+Author: Vinicius Gabriel Machado - January / February 2021
+UFPR - Bacharelado em Ciencia da Computacao
+Professor: Bruno Muller Junior
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trabalho de programacao web, processador de retas">
+    <meta name="keywords" content="BCC, UFPR, Aluno, Ciencia, Computacao, trabalho, processador, retas">
+    <meta name="author" content="Vinicius Gabriel Machado">
+    <title>Cache Hash com comunicação TCP entre servidores-cache e cache-cliente</title>
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <script defer type="text/javascript" src="../../dist/swup.min.js"></script>
+    <script defer type="text/javascript" src="../../script/script.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="link" href="/./vgm18/index.html"><div>Sobre Mim</div></a>
+      <a class="link" href="/./vgm18/disciplinas.html"><div>Currículo Disciplinar</div></a>
+      <a class="link" href="/./vgm18/tdisciplinas.html"><div>Trabalhos Disciplinas</div></a>
+    </nav>
+    <div class="navbar-back blur"></div>
+    <main id="swup">
+      <header class="transition-plusY blur border">
+        <div class="border fifth container">
+          <h1>Cache Hash com comunicação TCP entre servidores-cache e cache-cliente</h1>
+        </div>
+      </header>
+      <div class="transition-plusY main-content-free-overflow border-b blur">
+        <div class="container">
+          <div class="center-text">
+            <h3>Relatório do trabalho para a disciplina Redes de Computadores 2</h3>
+            <h3>Aluno: Vinicius Gabriel Machado (GRR20182552)</h3>
+            <h3>Professor: Elias P. Duarte Jr.</h3>
+            <h3>Departamento de Informática - Bacharelado em Ciência da Computação (BCC) - UFPR</h3>
+            <h3>Abril 2022</h3>
+          </div>
+          <div>
+            <h1>Descrição do trabalho:</h1>
+            <br>
+	          <h3>- <a class="link" href="https://www.inf.ufpr.br/elias/redes/tpRedesII2022ere5.html">Link para o site do professor</a></h3>
+            <br><br>
+            <h1>Fluxo de Execução:</h1>
+            <br>
+            <h3 class="white-text">- Inicialização:</h3>
+            <br>
+            <h3>Primeiramente os 3 servidores são inicializados. Depois disso a cache é inicializada e por fim, o cliente.</h3>
+            <br>
+            <h3>python3 server.py 1</h3>
+            <h3>python3 server.py 2</h3>
+            <h3>python3 server.py 3</h3>
+            <br>
+            <h3>python3 cache.py</h3>
+            <br>
+            <h3>python3 client.py</h3>
+            <br>
+            <h3 class="white-text">- Solicitação por um dado:</h3>
+            <br>
+            <h3>Na interface do cliente é solicitado qual dado de temperatura o usuário deseja verificar.</h3>
+            <h3>A entrada esperada é um número entre 1 e 3, com a seguinte equivalência:</h3>
+            <br>
+            <h3>1 - Dado de temperatura do servidor da Antártida</h3>
+            <h3>2 - Dado de temperatura do servidor do Deserto de Atacama</h3>
+            <h3>3 - Dado de temperatura do servidor do Monte Everest</h3>
+            <br>
+            <h3 class="white-text">- Processamento da solicitação:</h3>
+            <br>
+            <h3>Inicialmente o cliente envia o id do servidor, que deseja saber o dado de temperatura, para a cache.</h3>
+            <h3>A cache por sua vez consulta a sua tabela hash contendo o dado registrado da última consulta e o momento de realização da última consulta.</h3>
+            <br>
+            <h3>Há duas circunstâncias:</h3>
+            <br>
+            <h3>1 - Se a última consulta tiver sido feita há 30 segundos, o dado é coletado da tabela hash e enviado ao cliente, que exibe ao usuário.</h3>
+            <br>
+            <h3>2 - Se a última consulta tiver mais de 30 segundos, o dado é solicitado ao servidor correspondente por meio do envio de uma flag: get_data.</h3>
+            <h3>O servidor por sua vez gera um novo dado aleatório de acordo com o range de temperatura adequado e envia à cache uma string já formatada.</h3>
+            <h3>A cache então envia ao cliente, que exibe ao usuário.</h3>
+            <br><br>
+            <h1>Detalhes da implementação:</h1>
+            <br>
+            <h3 class="white-text">- Linguagem utilizada:</h3>
+            <br>
+            <h3>Python.</h3>
+            <br>
+            <h3 class="white-text">- Bibliotecas:</h3>
+            <br>
+            <h3>socket, sys, time e secrets.</h3>
+            <br>
+            <h3 class="white-text">- Host:</h3>
+            <br>
+            <h3>localhost</h3>
+            <br>
+            <h3 class="white-text">- Portas:</h3>
+            <br>
+            <h3>42111, 42222 e 42333.</h3>
+            <br>
+            <h3 class="white-text">- Ranges de temperatura:</h3>
+            <h3>Antartida: fim: -10 e início: -60</h3>
+            <h3>Deserto de Atacama: fim: 32 e início: -2</h3>
+            <h3>Monte Everest: fim: -19 e início: -3</h3>
+            <br><br>
+            <h1>Arquivos:</h1>
+            <br>
+            <h3 class="white-text">- Fluxo de execução de exemplo para os logs:</h3>
+            <br>
+            <h3><a class="link" href="https://www.inf.ufpr.br/vgm18/trabalhos_disciplinas/cachehash/arquivos/fluxo.txt">fluxo.txt</a></h3>
+            <br>
+            <h3 class="white-text">- Logs:</h3>
+            <br>
+            <h3><a class="link" href="https://www.inf.ufpr.br/vgm18/trabalhos_disciplinas/cachehash/arquivos/server1.log.txt">server1.log.txt</a></h3>
+            <h3><a class="link" href="https://www.inf.ufpr.br/vgm18/trabalhos_disciplinas/cachehash/arquivos/server2.log.txt">server2.log.txt</a></h3>
+            <h3><a class="link" href="https://www.inf.ufpr.br/vgm18/trabalhos_disciplinas/cachehash/arquivos/server3.log.txt">server3.log.txt</a></h3>
+            <h3><a class="link" href="https://www.inf.ufpr.br/vgm18/trabalhos_disciplinas/cachehash/arquivos/cache.log.txt">cache.log.txt</a></h3>
+            <h3><a class="link" href="https://www.inf.ufpr.br/vgm18/trabalhos_disciplinas/cachehash/arquivos/client.log.txt">client.log.txt</a></h3>
+            <br>
+            <h3 class="white-text">- Implementação:</h3>
+            <h3><a class="link" href="https://www.inf.ufpr.br/vgm18/trabalhos_disciplinas/cachehash/arquivos/server.py.txt">server.py.txt</a></h3>
+            <h3><a class="link" href="https://www.inf.ufpr.br/vgm18/trabalhos_disciplinas/cachehash/arquivos/cache.py.txt">cache.py.txt</a></h3>
+            <h3><a class="link" href="https://www.inf.ufpr.br/vgm18/trabalhos_disciplinas/cachehash/arquivos/client.py.txt">client.py.txt</a></h3>
+            <br><br>
+            <h1>Diário de implementação:</h1>
+            <br>
+            <h3>- Criada conexão client e cache de teste para a manipulação do socket, com operação de envio e recebimento de um unico dado</h3>
+            <h3>- Organização do código em funções e métodos</h3>
+            <h3>- Definição de uma cache com os campos: segundo de acesso, dado e porta do servidor que contêm o dado para quando for feita a consulta (ainda não foi feito os servidores)</h3>
+            <h3>- Implementação de uma interface para o cliente solicitar dado do servidor que for de interesse (utilizando apenas o client no momento)</h3>
+            <h3>- Realização da conexão com a cache, solicitando o dado de acordo com a entrada do usuário</h3>
+            <h3>- Teste de leitura, armazenando valores aleatórios na cache (sem conectar com os servidores ainda) com tempo de validade</h3>
+            <h3>- Implementação dos servidores com uma porta diferente para cada (com o mesmo arquivo python diferenciando na linha de comando os servidores)</h3>
+            <h3>- Conexão dos servidores com a cache</h3>
+            <h3>- Alteração do método de acesso aos dados, usando agora os servidores conectados</h3>
+            <h3>- Criação de um dicionário próprio para os dados dos servidores (porta e conexão), removendo da cache</h3>
+            <h3>- Adição de comentários no código</h3>
+            <h3>- Adaptação do código de geração de números aleatórios, usando um range definido para cada servidor</h3>
+            <h3>- Criação de mensagens de log</h3>
+            <h3>- Adição de timestamps para os logs</h3>
+          </div>
+        </div>
+      </div>
+      <div class="transition-plusX background sixth"></div>
+      <div class="background-transition"></div>
+    </main>
+  </body>
+</html>

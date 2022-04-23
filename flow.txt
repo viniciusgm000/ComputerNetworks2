@@ -9,7 +9,7 @@
 | inicializa              |                         |                         |                         |         
 | conecta com cache       |                         |                         |                         |           
 
-Primeiro acesso:
+Primeiro acesso - dado na cache expirou (primeiro acesso):
 
 | le solicitacao 1        |                         |                         |                         |        
 |                         | expirado, solicita 1    |                         |                         |         
@@ -27,7 +27,7 @@ Primeiro acesso:
 |                         | envia dado cliente      |                         |                         |          
 | informa dado 3          |                         |                         |                         |         
 
-Segundo acesso:
+Segundo acesso - dado na cache ainda nao expirou (acesso em menos de 30 segundos):
 
 | le solicitacao 1        |                         |                         |                         |         
 |                         | nao expirado, envia     |                         |                         |           
@@ -39,7 +39,7 @@ Segundo acesso:
 |                         | nao expirado, envia     |                         |                         |        
 | informa dado 3          |                         |                         |                         |          
 
-Terceiro acesso:
+Terceiro acesso - dado na cache expirou (acesso em mais de 30 segundos):
 
 | le solicitacao 1        |                         |                         |                         |        
 |                         | expirado, solicita 1    |                         |                         |         
