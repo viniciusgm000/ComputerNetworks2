@@ -1,0 +1,62 @@
+| client                  | cache                   | server1                 | server2                 | server3
+
+|                         |                         |                         |                         |         
+|                         |                         | inicializa              | inicializa              | inicializa
+|                         |                         | cria conexao cache      | cria conexao cache      | cria conexao cache
+|                         | inicializa              |                         |                         |        
+|                         | cria conexao client     |                         |                         |          
+|                         | conecta com servidores  |                         |                         |        
+| inicializa              |                         |                         |                         |         
+| conecta com cache       |                         |                         |                         |           
+
+Primeiro acesso:
+
+| le solicitacao 1        |                         |                         |                         |        
+|                         | expirado, solicita 1    |                         |                         |         
+|                         |                         | gera dado e envia cache |                         |          
+|                         | envia dado cliente      |                         |                         |        
+| informa dado 1          |                         |                         |                         |          
+| le solicitacao 2        |                         |                         |                         |        
+|                         | expirado, solicita 2    |                         |                         |        
+|                         |                         |                         | gera dado e envia cache |        
+|                         | envia dado cliente      |                         |                         |            
+| informa dado 2          |                         |                         |                         |          
+| le solicitacao 3        |                         |                         |                         |        
+|                         | expirado, solicita 3    |                         |                         |            
+|                         |                         |                         |                         | gera dado e envia cache
+|                         | envia dado cliente      |                         |                         |          
+| informa dado 3          |                         |                         |                         |         
+
+Segundo acesso:
+
+| le solicitacao 1        |                         |                         |                         |         
+|                         | nao expirado, envia     |                         |                         |           
+| informa dado 1          |                         |                         |                         |         
+| le solicitacao 2        |                         |                         |                         |         
+|                         | nao expirado, envia     |                         |                         |          
+| informa dado 2          |                         |                         |                         |         
+| le solicitacao 3        |                         |                         |                         |        
+|                         | nao expirado, envia     |                         |                         |        
+| informa dado 3          |                         |                         |                         |          
+
+Terceiro acesso:
+
+| le solicitacao 1        |                         |                         |                         |        
+|                         | expirado, solicita 1    |                         |                         |         
+|                         |                         | gera dado e envia cache |                         |          
+|                         | envia dado cliente      |                         |                         |        
+| informa dado 1          |                         |                         |                         |          
+| le solicitacao 2        |                         |                         |                         |        
+|                         | expirado, solicita 2    |                         |                         |        
+|                         |                         |                         | gera dado e envia cache |        
+|                         | envia dado cliente      |                         |                         |            
+| informa dado 2          |                         |                         |                         |          
+| le solicitacao 3        |                         |                         |                         |        
+|                         | expirado, solicita 3    |                         |                         |            
+|                         |                         |                         |                         | gera dado e envia cache
+|                         | envia dado cliente      |                         |                         |          
+| informa dado 3          |                         |                         |                         |       
+
+| finaliza                |                         |                         |                         |         
+|                         | finaliza                |                         |                         |         
+|                         |                         | finaliza                | finaliza                | finaliza 

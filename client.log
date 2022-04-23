@@ -1,0 +1,33 @@
+[LOG CLIENT - 00:49:40] Cliente inicializado
+[LOG CLIENT - 00:49:40] Realizada a conexao com a cache
+Qual temperatura gostaria de consultar?
+Opcoes:
+1 - Antartida; 2 - Deserto de Atacama; 3 - Monte Everest; exit - termina a execucao
+1
+[LOG CLIENT - 00:49:43] Solicitando o dado do servidor 1
+[LOG CLIENT - 00:49:43] Dado recebido da cache: Temperatura no(a) Antartida: -50°C
+2
+[LOG CLIENT - 00:49:46] Solicitando o dado do servidor 2
+[LOG CLIENT - 00:49:46] Dado recebido da cache: Temperatura no(a) Deserto de Atacama: 5°C
+3
+[LOG CLIENT - 00:49:50] Solicitando o dado do servidor 3
+[LOG CLIENT - 00:49:50] Dado recebido da cache: Temperatura no(a) Monte Everest: -21°C
+1
+[LOG CLIENT - 00:49:55] Solicitando o dado do servidor 1
+[LOG CLIENT - 00:49:55] Dado recebido da cache: Temperatura no(a) Antartida: -50°C
+2
+[LOG CLIENT - 00:49:57] Solicitando o dado do servidor 2
+[LOG CLIENT - 00:49:57] Dado recebido da cache: Temperatura no(a) Deserto de Atacama: 5°C
+3
+[LOG CLIENT - 00:49:59] Solicitando o dado do servidor 3
+[LOG CLIENT - 00:49:59] Dado recebido da cache: Temperatura no(a) Monte Everest: -21°C
+1
+[LOG CLIENT - 00:50:37] Solicitando o dado do servidor 1
+[LOG CLIENT - 00:50:37] Dado recebido da cache: Temperatura no(a) Antartida: -48°C
+2
+[LOG CLIENT - 00:50:38] Solicitando o dado do servidor 2
+[LOG CLIENT - 00:50:38] Dado recebido da cache: Temperatura no(a) Deserto de Atacama: 23°C
+3
+[LOG CLIENT - 00:50:39] Solicitando o dado do servidor 3
+[LOG CLIENT - 00:50:39] Dado recebido da cache: Temperatura no(a) Monte Everest: -22°C
+[LOG CLIENT - 00:50:43] Cliente finalizado

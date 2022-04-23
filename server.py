@@ -1,6 +1,12 @@
+# Autor: Vinicius Gabriel Machado - abril 2022
+# Trabalho para a disciplina de Redes de Computadores 2
+# Professor: Elias P. Duarte Jr.
+# Graduacao em Ciencia da Computacao - UFPR
+
 import socket
 import sys
 import secrets
+import time
 
 # definicao do host utilizado - localhost
 HOST = "127.0.0.1"
@@ -28,7 +34,7 @@ def create_connection_cache(server_id):
     s.bind((HOST, servers[server_id]["port"]))
     s.listen()
     conn, addr = s.accept()
-    print(f"Criada conexao para a cache por {addr}")
+    print(f"[LOG SERVER {server_id} - {time.strftime('%H:%M:%S', time.localtime())}] Criada conexao para a cache por {addr}")
     return conn
 
 # funcao para comunicacao com a cache - segue o padrao: recebe solicitacao entao responde
@@ -43,25 +49,25 @@ def receive_send_cache(conn, server_id):
             # se o conteudo for o esperado - para garantir que a conexao eh a correta - envia o dado de temperatura do servidor
             # de acordo com o range permitido, arredondando para o inteiro mais proximo
             elif (data.decode('utf-8') == "get_data"):
-                print("Recebida solicitação de dado de temperatura pela cache")
+                print(f"[LOG SERVER {server_id} - {time.strftime('%H:%M:%S', time.localtime())}] Recebida solicitação de dado de temperatura pela cache")
                 temperature = str(round(rng.uniform(servers[server_id]["range_start"], servers[server_id]["range_end"])))
                 temperature = "Temperatura no(a) " + servers[server_id]["name"] + ": " + temperature + "°C"
-                print("Dado enviado para a cache: " + temperature)
+                print(f"[LOG SERVER {server_id} - {time.strftime('%H:%M:%S', time.localtime())}] Dado enviado para a cache: " + temperature)
                 conn.sendall(bytes(temperature, encoding = 'utf-8'))
 
 # funcao principal
 def main(server_id):
-    print("Servidor " + server_id + " inicializado")
+    print(f"[LOG SERVER {server_id} - {time.strftime('%H:%M:%S', time.localtime())}] Servidor inicializado")
     # cria a conexao que sera utilizada pela cache, 
     # utilizando uma porta diferente para cada servidor (definido pelo id informado na linha de comando)
     conn = create_connection_cache(server_id)
     # escuta as solicitacoes da cache
     receive_send_cache(conn, server_id)
-    print("Servidor " + server_id + " finalizado")
+    print(f"[LOG SERVER {server_id} - {time.strftime('%H:%M:%S', time.localtime())}] Servidor finalizado")
 
 if __name__ == "__main__":
     if (len(sys.argv) != 2):
-        print("Erro - Uso correto:")
+        print("[ERRO] - Uso correto:")
         print(str(sys.argv[0]), "server.py <ID_SERVER>")
         sys.exit()
 

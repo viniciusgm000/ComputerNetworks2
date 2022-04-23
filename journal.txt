@@ -12,3 +12,4 @@ criacao de um dicionario proprio para os dados dos servidores (porta e conexao),
 adicao de comentarios no codigo
 adaptacao do codigo de geracao de numeros aleatorios, usando um range definido para cada servidor
 criacao de mensagens de log
+adicao de timestamps para os logs

@@ -1,3 +1,8 @@
+# Autor: Vinicius Gabriel Machado - abril 2022
+# Trabalho para a disciplina de Redes de Computadores 2
+# Professor: Elias P. Duarte Jr.
+# Graduacao em Ciencia da Computacao - UFPR
+
 import socket
 import time
 
@@ -30,13 +35,13 @@ cache = {
 def get_cache_data(server_id):
     # teste de expiracao do dado
     if (time.time() - cache[server_id]["access_time"] > CACHE_EXPIRATION):
-        print("Dado expirado, solicitando a atualizacao pelo servidor")
+        print(f"[LOG CACHE - {time.strftime('%H:%M:%S', time.localtime())}] Dado expirado, solicitando a atualizacao pelo servidor {server_id}")
         # registra o novo segundo de acesso e solicita a atualizacao do dado
         cache[server_id]["access_time"] = time.time()
         cache[server_id]["data"] = send_receive_server(server_id)
-        print("Dado recebido: " + cache[server_id]["data"])
+        print(f"[LOG CACHE - {time.strftime('%H:%M:%S', time.localtime())}] Dado recebido: " + cache[server_id]["data"])
     else:
-        print("Dado ainda nao expirou, acessando a cache")
+        print(f"[LOG CACHE - {time.strftime('%H:%M:%S', time.localtime())}] Dado ainda nao expirou, acessando a cache")
     cache_data = cache[server_id]["data"]
     return str(cache_data)
 
@@ -49,7 +54,7 @@ def create_connection_client():
     s.bind((HOST, CLIENT_PORT))
     s.listen()
     conn, addr = s.accept()
-    print(f"Criada conexao para o cliente por {addr}")
+    print(f"[LOG CACHE - {time.strftime('%H:%M:%S', time.localtime())}] Criada conexao para o cliente por {addr}")
     return conn
 
 # funcao para comunicacao com o cliente - segue o padrao: recebe solicitacao entao responde
@@ -62,11 +67,11 @@ def receive_send_client(conn):
             if not data:
                 break
             elif (1 <= int(data) <= 3):
-                print("Recebida solicitação de dado de temperatura pelo cliente")
+                print(f"[LOG CACHE - {time.strftime('%H:%M:%S', time.localtime())}] Recebida solicitação de dado de temperatura pelo cliente")
                 # acessa o dado e envia a resposta ao cliente
                 cache_data = get_cache_data(data.decode("utf-8"))
                 conn.sendall(bytes(cache_data, encoding = 'utf-8'))
-                print("Dado enviado para o cliente: " + cache_data)
+                print(f"[LOG CACHE - {time.strftime('%H:%M:%S', time.localtime())}] Dado enviado para o cliente: " + cache_data)
 
 # servers
 
@@ -77,7 +82,7 @@ def connect_server(server_id):
     s.connect((HOST, servers[server_id]["server_port"]))
     # registro do socket no dicionario de servidores
     servers[server_id]["server_socket"] = s
-    print(f"Realizada a conexao com o servidor " + server_id)
+    print(f"[LOG CACHE - {time.strftime('%H:%M:%S', time.localtime())}] Realizada a conexao com o servidor " + server_id)
 
 # funcao para comunicacao com o servidor - segue o padrao: envia solicitacao e recebe dado
 def send_receive_server(server_id):
@@ -90,7 +95,7 @@ def send_receive_server(server_id):
 
 # funcao principal
 def main():
-    print("Cache inicializada")
+    print(f"[LOG CACHE - {time.strftime('%H:%M:%S', time.localtime())}] Cache inicializada")
     # criacao da conexao com o cliente
     client_conn = create_connection_client()
     # conexao com os servidores
@@ -99,7 +104,7 @@ def main():
     connect_server("3")
     # escuta as solicitacoes do cliente
     receive_send_client(client_conn)
-    print("Cache finalizada")
+    print(f"[LOG CACHE - {time.strftime('%H:%M:%S', time.localtime())}] Cache finalizada")
 
 
 if __name__ == "__main__":

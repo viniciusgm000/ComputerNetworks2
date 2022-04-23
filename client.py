@@ -1,5 +1,11 @@
+# Autor: Vinicius Gabriel Machado - abril 2022
+# Trabalho para a disciplina de Redes de Computadores 2
+# Professor: Elias P. Duarte Jr.
+# Graduacao em Ciencia da Computacao - UFPR
+
 import socket
 import sys
+import time
 
 # definicao do host utilizado - localhost
 HOST = "127.0.0.1"
@@ -12,7 +18,7 @@ def connect_cache():
     # definicao do socket a ser utilizado, realizando a conexao com a porta pre-definida
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((HOST, CACHE_PORT))
-    print(f"Realizada a conexao com a cache")
+    print(f"[LOG CLIENT - {time.strftime('%H:%M:%S', time.localtime())}] Realizada a conexao com a cache")
     return s
 
 # funcao para comunicacao com a cache - segue o padrao: solicita entao recebe dado
@@ -33,20 +39,21 @@ def get_user_input(s):
         user_input = input()
         # opcao para terminar a execucao do cliente, consequentemente, fecha todos os processos em cascata
         if (user_input == "exit"):
-            print("Cliente finalizado")
+            print(f"[LOG CLIENT - {time.strftime('%H:%M:%S', time.localtime())}] Cliente finalizado")
             sys.exit()
         # entrada erronea
         elif (user_input == "" or not (1 <= int(user_input) <= 3)):
             print("Opção indisponível, digite novamente")
         # envio da solicitacao de dados para a cache, em caso de entrada correta
         else:
-            print("Solicitando o dado do servidor " + user_input)
+            print(user_input)
+            print(f"[LOG CLIENT - {time.strftime('%H:%M:%S', time.localtime())}] Solicitando o dado do servidor " + user_input)
             received = send_receive_cache(s, user_input)
-            print("Dado recebido: " + received)
+            print(f"[LOG CLIENT - {time.strftime('%H:%M:%S', time.localtime())}] Dado recebido da cache: " + received)
 
 # funcao principal
 def main():
-    print("Cliente inicializado")
+    print(f"[LOG CLIENT - {time.strftime('%H:%M:%S', time.localtime())}] Cliente inicializado")
     # conexao com a cache
     s = connect_cache()
     # leitura da entrada do usuario

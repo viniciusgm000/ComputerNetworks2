@@ -1,0 +1,7 @@
+[LOG SERVER 1 - 00:49:22] Servidor inicializado
+[LOG SERVER 1 - 00:49:40] Criada conexao para a cache por ('127.0.0.1', 45804)
+[LOG SERVER 1 - 00:49:43] Recebida solicitação de dado de temperatura pela cache
+[LOG SERVER 1 - 00:49:43] Dado enviado para a cache: Temperatura no(a) Antartida: -50°C
+[LOG SERVER 1 - 00:50:37] Recebida solicitação de dado de temperatura pela cache
+[LOG SERVER 1 - 00:50:37] Dado enviado para a cache: Temperatura no(a) Antartida: -48°C
+[LOG SERVER 1 - 00:50:43] Servidor finalizado

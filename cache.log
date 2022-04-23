@@ -1,0 +1,39 @@
+[LOG CACHE - 00:49:35] Cache inicializada
+[LOG CACHE - 00:49:40] Criada conexao para o cliente por ('127.0.0.1', 44018)
+[LOG CACHE - 00:49:40] Realizada a conexao com o servidor 1
+[LOG CACHE - 00:49:40] Realizada a conexao com o servidor 2
+[LOG CACHE - 00:49:40] Realizada a conexao com o servidor 3
+[LOG CACHE - 00:49:43] Recebida solicitação de dado de temperatura pelo cliente
+[LOG CACHE - 00:49:43] Dado expirado, solicitando a atualizacao pelo servidor 1
+[LOG CACHE - 00:49:43] Dado recebido: Temperatura no(a) Antartida: -50°C
+[LOG CACHE - 00:49:43] Dado enviado para o cliente: Temperatura no(a) Antartida: -50°C
+[LOG CACHE - 00:49:46] Recebida solicitação de dado de temperatura pelo cliente
+[LOG CACHE - 00:49:46] Dado expirado, solicitando a atualizacao pelo servidor 2
+[LOG CACHE - 00:49:46] Dado recebido: Temperatura no(a) Deserto de Atacama: 5°C
+[LOG CACHE - 00:49:46] Dado enviado para o cliente: Temperatura no(a) Deserto de Atacama: 5°C
+[LOG CACHE - 00:49:50] Recebida solicitação de dado de temperatura pelo cliente
+[LOG CACHE - 00:49:50] Dado expirado, solicitando a atualizacao pelo servidor 3
+[LOG CACHE - 00:49:50] Dado recebido: Temperatura no(a) Monte Everest: -21°C
+[LOG CACHE - 00:49:50] Dado enviado para o cliente: Temperatura no(a) Monte Everest: -21°C
+[LOG CACHE - 00:49:55] Recebida solicitação de dado de temperatura pelo cliente
+[LOG CACHE - 00:49:55] Dado ainda nao expirou, acessando a cache
+[LOG CACHE - 00:49:55] Dado enviado para o cliente: Temperatura no(a) Antartida: -50°C
+[LOG CACHE - 00:49:57] Recebida solicitação de dado de temperatura pelo cliente
+[LOG CACHE - 00:49:57] Dado ainda nao expirou, acessando a cache
+[LOG CACHE - 00:49:57] Dado enviado para o cliente: Temperatura no(a) Deserto de Atacama: 5°C
+[LOG CACHE - 00:49:59] Recebida solicitação de dado de temperatura pelo cliente
+[LOG CACHE - 00:49:59] Dado ainda nao expirou, acessando a cache
+[LOG CACHE - 00:49:59] Dado enviado para o cliente: Temperatura no(a) Monte Everest: -21°C
+[LOG CACHE - 00:50:37] Recebida solicitação de dado de temperatura pelo cliente
+[LOG CACHE - 00:50:37] Dado expirado, solicitando a atualizacao pelo servidor 1
+[LOG CACHE - 00:50:37] Dado recebido: Temperatura no(a) Antartida: -48°C
+[LOG CACHE - 00:50:37] Dado enviado para o cliente: Temperatura no(a) Antartida: -48°C
+[LOG CACHE - 00:50:38] Recebida solicitação de dado de temperatura pelo cliente
+[LOG CACHE - 00:50:38] Dado expirado, solicitando a atualizacao pelo servidor 2
+[LOG CACHE - 00:50:38] Dado recebido: Temperatura no(a) Deserto de Atacama: 23°C
+[LOG CACHE - 00:50:38] Dado enviado para o cliente: Temperatura no(a) Deserto de Atacama: 23°C
+[LOG CACHE - 00:50:39] Recebida solicitação de dado de temperatura pelo cliente
+[LOG CACHE - 00:50:39] Dado expirado, solicitando a atualizacao pelo servidor 3
+[LOG CACHE - 00:50:39] Dado recebido: Temperatura no(a) Monte Everest: -22°C
+[LOG CACHE - 00:50:39] Dado enviado para o cliente: Temperatura no(a) Monte Everest: -22°C
+[LOG CACHE - 00:50:43] Cache finalizada
